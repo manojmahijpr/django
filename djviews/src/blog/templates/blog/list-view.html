@@ -1,0 +1,26 @@
+{% if messages %}
+    <ul class="message">
+        {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+
+
+
+<h1>POSTS</h1>
+
+{% include 'blog/search-blog.html' %}
+
+
+
+<ol>
+    {% for post in posts %}
+        <li>
+        <a href="/blog/{{ post.id }}">{{ post.title}}</a>
+        {% comment %} <a href='{% url "blog:detail" id=post.id %}'>{{ post.title}}</a>
+        <a href="{{ post.get_absolute_url }}">{{ post.title}}</a> {% endcomment %}
+        </li>
+    {% endfor %}
+</ol>
